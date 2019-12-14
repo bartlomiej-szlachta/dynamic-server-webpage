@@ -1,6 +1,6 @@
 {
   "dependencies": {
     "express": "latest",
-    "body-parser": "latest"
+    "express-device": "latest"
   }
 }

@@ -1,40 +1,42 @@
 const http = require('http');
 const express = require('express');
-const bodyParser = require('body-parser');
-const fs = require('fs');
+const device = require('express-device');
 const path = require('path');
 
 const app = express();
-app.use(bodyParser.json());
-app.use((req, res, next) => setTimeout(next, 3000 * Math.random()));
+
+app.use(device.capture());
 
 app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });
 
-const getDir = (req) => {
-  // TODO: wybór katalogu w zależności od urządzenia
-  switch (req.headers['user-agent']) {
-    case '?':
-      return '?';
-    case '??':
-      return '??';
-    default:
+const getDirectoryName = (req) => {
+  switch (req.device.type.toUpperCase()) {
+    case 'DESKTOP':
       return 'desktop';
+    case 'TABLET': // TODO: przetestować, czy nazwa typu dla tabletu jest właśnie taka
+      return 'tablelt';
+    case 'PHONE':
+      return 'mobile';
+    default:
+      return 'none';
   }
 };
 
 app.get('/index.html', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'public', getDir(req), 'index.html'));
+  console.log(req.headers['user-agent']);
+
+  res.sendFile(path.resolve(__dirname, '..', 'public', getDirectoryName(req), 'index.html'));
 });
 
 app.get('/index.js', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'public', getDir(req), 'index.js'));
+  res.sendFile(path.resolve(__dirname, '..', 'public', getDirectoryName(req), 'index.js'));
 });
 
 app.get('/index.css', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '..', 'public', getDir(req), 'index.css'));
+  res.sendFile(path.resolve(__dirname, '..', 'public', getDirectoryName(req), 'index.css'));
 });
 
 app.get('/*', (req, res) => res.sendStatus(404));
