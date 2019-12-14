@@ -17,7 +17,7 @@ const getDirectoryName = (req) => {
     case 'DESKTOP':
       return 'desktop';
     case 'TABLET':
-      return 'tablelt';
+      return 'tablet';
     case 'PHONE':
       return 'mobile';
     default:
