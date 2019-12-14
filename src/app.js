@@ -16,7 +16,7 @@ const getDirectoryName = (req) => {
   switch (req.device.type.toUpperCase()) {
     case 'DESKTOP':
       return 'desktop';
-    case 'TABLET': // TODO: przetestować, czy nazwa typu dla tabletu jest właśnie taka
+    case 'TABLET':
       return 'tablelt';
     case 'PHONE':
       return 'mobile';
