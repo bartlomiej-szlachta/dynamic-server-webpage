@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: 100%;
+}
+
+#li-tablet {
+  font-weight: bold;
+}
+
+.row {
+  display: flex;
+}
+
+.tile {
+  flex: 1;
+  background-color: lightgray;
+  margin: 5px;
+  text-align: center;
+  height: 50px;
+}
