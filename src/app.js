@@ -26,8 +26,6 @@ const getDirectoryName = (req) => {
 };
 
 app.get('/index.html', (req, res) => {
-  console.log(req.headers['user-agent']);
-
   res.sendFile(path.resolve(__dirname, '..', 'public', getDirectoryName(req), 'index.html'));
 });
 
