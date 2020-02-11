@@ -1,36 +1,32 @@
-# Dynamiczna strona internetowa
+# dynamic-server-webpage
 
-Autor: Bartłomiej Szlachta
+A server application providing different webpagelayout depending on the client device type. The available options are:
+- desktop site
+- tablet site
+- mobile site
 
-Strona internetowa, różniąca się w zależności od urządzenia, na którym jest wyświetlana. Dostępne wersje to:
-- przeglądarkowa
-- tabletowa
-- mobilna
+The server (developed in [node.js](https://nodejs.org/en/) and [express.js](https://expressjs.com/)) decides which webpage layout to send according to a HTTP header.
 
-Aplikacja decyduje o wyborze strony do wyświetlenia w zależności od podanego nagłówka HTTP.
- 
- Serwer udostępniający pliki projektu został utworzony w [node.js](https://nodejs.org/en/) przy użyciu biblioteki [express.js](https://expressjs.com/).
+## Development environment preparation
 
-## Przygotowanie środowiska
-
-Aplikacja wymaga na komputerze zainstalowanego [node.js](https://nodejs.org/en/). Przed uruchomieniem, należy pobrać pliki bibliotek, wykonując w głównym katalogu polecenie:
+The appliaction requires [node.js](https://nodejs.org/en/) to be installed on a computer. Before launch, library files need to be installed by executing the following command at the project root:
 ```
 npm i
 ```
+The files are stored in the `node_modules` directory (the directory is ignored by GIT).
 
-## Uruchamianie
+## Launch
 
-Aby uruchomić serwer, należy wykonać w katalogu `src` polecenie:
+The server can be launched by executing the following command in the `src` directory:
 ```
 node app.js
 ```
-To uruchomi lokalny api serwer deweloperski pod adresem `http://localhost:8000`. Teraz można otworzyć stronę, wpisując powyższy adres w pasku przeglądarki, dodając `/index.html`.
+The command launches a local development api-server at `http://localhost:8000`. The site can be opened:
+- on the computer the server is running on by typing `http://localhost:8000/index.html` in the url-bar in a browser
+- on the other device by typing `http://{IP_ADDRESS}:8000/index.html` in the url-bar in a browser, where `{IP_ADDRESS}` is the IP address of the computer the server is running on.
 
-Aby otworzyć stronę na telefonie, należy uruchomić serwer na komputerze zgodnie z powyższymi instrukcjami oraz mieć podłączone urządzenie do tej samej sieci bezprzewodowej, do której podłączony jest komputer. Następnie należy wpisać w pasku przeglądarki na aplikacji mobilnej adres IP komputera oraz `:8000/index.html`.
+## Anailable endpoints
 
-## Dostępne endpointy
-
-- zapytanie metodą `GET` na adres `/index.html` zwróci plik HTML, różny w zależności od urządzenia
-- zapytanie metodą `GET` na adres `/index.css` zwróci plik CSS, różny w zależności od urządzenia
-- zapytanie metodą `GET` na adres `/index.js` zwróci plik JS, różny w zależności od urządzenia
-
+- a request sent by `GET` method at the `/index.html` returns HTML file, different depending on the device
+- a request sent by `GET` at the `/index.css` returns CSS file, different depending on the device
+- a request sent by `GET` at the `/index.js` returns JS file, different depending on the device
