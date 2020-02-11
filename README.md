@@ -25,7 +25,7 @@ The command launches a local development api-server at `http://localhost:8000`. 
 - on the computer the server is running on by typing `http://localhost:8000/index.html` in the url-bar in a browser
 - on the other device by typing `http://{IP_ADDRESS}:8000/index.html` in the url-bar in a browser, where `{IP_ADDRESS}` is the IP address of the computer the server is running on.
 
-## Anailable endpoints
+## Available endpoints
 
 - a request sent by `GET` method at the `/index.html` returns HTML file, different depending on the device
 - a request sent by `GET` at the `/index.css` returns CSS file, different depending on the device
